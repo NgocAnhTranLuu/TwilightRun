@@ -48,6 +48,12 @@
       href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"
     />
 
+    <!-- Định dạng ngày tháng -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+
     <!-- CSS HTML-->
     <link rel="stylesheet" href="../../../../CSS/index.css" />
   </head>
@@ -462,7 +468,6 @@
     <div class="bg-orange-500 w-full h-3"></div>
 
     <!-- New -->
-
     <section class="max-w-screen-xl m-auto my-12">
       <h2
         class="uppercase font-bold text-3xl text-center mt-16 mb-1 md:text-5xl text-orange-500"
@@ -473,636 +478,603 @@
         Đăng ký nhóm (trên 10 người) - liên hệ BTC để nhận ưu đãi hấp dẫn.
       </h2>
 
-      <!-- <div id="accordion-color-NTT1" data-accordion="collapse" data-active-classes="bg-orange-500 text-white"> -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-4">
         <!-- Bên trái -->
-        <div class="col-span-2">
-          <!-- <div id="accordion-color-body-1NTT" class="hidden" aria-labelledby="accordion-color-heading-1NTT">
-                        <div class="p-5 border rounded-lg border-stone-200">
-                            <p class="">
-                                1. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, quos. Rerum commodi
-                                minima harum magnam voluptatem! Provident iste ex rerum totam voluptate maxime obcaecati
-                                est enim, non fuga! Fuga, id.
-                            </p>
-                        </div>
-                    </div> -->
-
-          <div class="">
+        <div class="col-span-2" id="dangKyTrai">
+          <div class="" id="yeuCauDangNhap">
             <p>khong nhap thi dung mog sua?</p>
             <button>Dang nhap</button>
           </div>
           <!-- Chọn giải -->
-          <div class="text-sm text-stone-900">
-            <label for="ChonGiaiChay" class="block mb-2 text-lg font-medium"
+          <div class="text-sm text-stone-900" id="divChonGiaiChay">
+            <label for="chonGiaiChay" class="block mb-2 text-lg font-medium"
               >Chọn giải chạy bạn muốn tham dự</label
             >
             <select
-              id="ChonGiaiChay"
+              id="chonGiaiChay"
               class="block w-full p-2 mb-6 border border-stone-400 rounded-lg bg-stone-50"
-            >
-              <option selected>Chọn giải chạy</option>
-              <option value="SS">Sầm Sơn - Thanh Hóa Twilight Run 2024</option>
-              <option value="TC">Trà Cổ Twilight Run 2024</option>
-            </select>
+            ></select>
           </div>
 
           <!-- Chọn cự ly chạy -->
-          <p class="text-lg font-medium mb-2">Chọn cự ly chạy</p>
-          <p class="text-center italic text-orange-500 my-2">
-            Giá Early Bird (trước ngày 15/07)
-          </p>
-
-          <div
-            class="flex flex-row flex-wrap gap-8 p-4 xl:p-0 justify-center uppercase"
-          >
-            <div class="SSkmItem shadow-md">
-              <div class="p-4 bg-white rounded-t-lg">
-                <p class="font-black text-6xl">
-                  5<span class="text-xl">km</span>
-                </p>
-                <p class="line-through text-stone-500">568.000 VNĐ</p>
-                <p class="font-bold text-xl">368.000 VNĐ</p>
-              </div>
-
-              <div class="CuLyHien py-2 text-white">
-                <span>Chọn mua</span>
-              </div>
-              <div class="CuLyAn py-2 text-white">
-                <i class="fa-solid fa-circle-check"></i>
-                <span>Đã chọn</span>
-              </div>
-            </div>
-            <div class="SSkmItem shadow-md">
-              <div class="p-4 bg-white rounded-t-lg">
-                <p class="font-black text-6xl">
-                  21<span class="text-xl">km</span>
-                </p>
-                <p class="line-through text-stone-500">868.000 VNĐ</p>
-                <p class="font-bold text-xl">668.000 VNĐ</p>
-              </div>
-
-              <div class="CuLyHien py-2 text-white">
-                <span>Chọn mua</span>
-              </div>
-              <div class="CuLyAn py-2 text-white">
-                <i class="fa-solid fa-circle-check"></i>
-                <span>Đã chọn</span>
-              </div>
-            </div>
-          </div>
-
-          <hr class="mt-8 mb-4" />
+          <div id="divChonCuLyChay"></div>
 
           <!-- Nhập thông tin -->
-          <p class="text-lg font-medium">Nhập thông tin vận động viên</p>
-          <p class="italic text-orange-500">
-            * Bạn cần nhập đầy đủ thông tin để đảm bảo quyền lợi khi tham gia
-            giải.
-          </p>
-
-          <form class="my-4 space-y-6" action="#">
-            <div class="form_BIB">
-              <div>
-                <label
-                  for="name"
-                  class="block my-1 text-sm font-medium text-stone-900"
-                >
-                  <i class="fa-solid fa-circle-question"></i> Họ và tên
-                </label>
-                <input
-                  type="name"
-                  name="name"
-                  id="name"
-                  placeholder="Họ và tên"
-                  required
-                  class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="nameBIB"
-                  class="block my-1 text-sm font-medium text-stone-900"
-                >
-                  <i class="fa-solid fa-circle-question"></i> Tên trên BIB
-                </label>
-                <input
-                  type="name"
-                  name="name"
-                  id="nameBIB"
-                  placeholder="Tên trên BIB"
-                  required
-                  class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="email"
-                  class="block my-1 text-sm font-medium text-stone-900"
-                >
-                  <i class="fa-solid fa-circle-question"></i> Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="name@gmail.com"
-                  required
-                  class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="floating_phone"
-                  class="block my-1 text-sm font-medium text-stone-900"
-                >
-                  <i class="fa-solid fa-circle-question"></i> Điện thoại
-                </label>
-                <input
-                  type="number"
-                  name="floating_phone"
-                  id="floating_phone"
-                  placeholder="Số điện thoại"
-                  required
-                  class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="textID"
-                  class="block my-1 text-sm font-medium text-stone-900"
-                >
-                  <i class="fa-solid fa-circle-question"></i> Căn cước/ Hộ chiếu
-                </label>
-                <input
-                  type="text"
-                  name="textID"
-                  id="textID"
-                  placeholder="Căn cước/ Hộ chiếu"
-                  required
-                  class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                />
-              </div>
-              <div>
-                <label
-                  for="QuocTich"
-                  class="block my-1 text-sm font-medium text-stone-900"
-                >
-                  <i class="fa-solid fa-circle-question"></i> Quốc tịch
-                </label>
-                <select
-                  id="QuocTich"
-                  class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2"
-                >
-                  <option selected>Chọn Quốc Tịch</option>
-                  <option value="SS">Việt Nam</option>
-                  <option value="TC">Nước ngoài</option>
-                </select>
-              </div>
-
-              <div class="text-sm mt-1 lg:mt-0">
-                <p class="text-sm font-medium text-stone-900">
-                  <i class="fa-solid fa-circle-question"></i> Ngày tháng năm
-                  sinh
-                </p>
-                <div class="grid grid-cols-3 gap-2">
-                  <div>
-                    <label
-                      for="numberDay"
-                      class="block my-1 text-sm font-medium text-stone-500"
-                    >
-                      Ngày
-                    </label>
-                    <input
-                      type="number"
-                      name="number"
-                      id="numberDay"
-                      placeholder="Ngày"
-                      required
-                      class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="numberMonth"
-                      class="block my-1 text-sm font-medium text-stone-500"
-                    >
-                      Tháng
-                    </label>
-                    <input
-                      type="number"
-                      name="number"
-                      id="numberMonth"
-                      placeholder="Tháng"
-                      required
-                      class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      for="numberYear"
-                      class="block my-1 text-sm font-medium text-stone-500"
-                    >
-                      Năm
-                    </label>
-                    <input
-                      type="number"
-                      name="number"
-                      id="numberYear"
-                      placeholder="Năm"
-                      required
-                      class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div class="text-sm mt-1 lg:mt-0">
-                <p class="font-medium text-stone-900">
-                  <i class="fa-solid fa-circle-question"></i> Nhóm máu
-                </p>
-                <div
-                  class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1 lg:mt-5"
-                >
-                  <a class="NhomMauItem shadow-md p-3">Không rõ</a>
-                  <a class="NhomMauItem shadow-md p-3">O</a>
-                  <a class="NhomMauItem shadow-md p-3">A</a>
-                  <a class="NhomMauItem shadow-md p-3">B</a>
-                  <a class="NhomMauItem shadow-md p-3">AB</a>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-4 text-sm mt-1 lg:mt-0">
-                <div class="">
-                  <p class="font-medium text-stone-900">
-                    <i class="fa-solid fa-circle-question"></i> Giới tính
-                  </p>
-                  <div
-                    class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
-                  >
-                    <a class="GioiTinhItem shadow-md p-3">Nam</a>
-                    <a class="GioiTinhItem shadow-md p-3">Nữ</a>
-                  </div>
-                </div>
+          <div id="divNhapThongTin">
+            <p class="text-lg font-medium">Nhập thông tin vận động viên</p>
+            <p class="italic text-orange-500">
+              * Bạn cần nhập đầy đủ thông tin để đảm bảo quyền lợi khi tham gia
+              giải.
+            </p>
+            <form class="my-4 space-y-6" action="#">
+              <div class="form_BIB">
+                <!-- họ tên -->
                 <div>
+                  <label
+                    for="nameInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Họ và tên
+                  </label>
+                  <input
+                    type="text"
+                    name="nameInputRegister"
+                    id="nameInputRegister"
+                    placeholder="Họ và tên"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="nameInputRegister-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <!-- Tên trên bib -->
+                <div>
+                  <!-- nameInputRegister -->
+                  <label
+                    for="nameBIBInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Tên trên BIB
+                  </label>
+                  <input
+                    type="text"
+                    name="nameBIBInputRegister"
+                    id="nameBIBInputRegister"
+                    placeholder="Tên trên BIB"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="nameBIBInputRegister-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <!-- Email -->
+                <div>
+                  <label
+                    for="emailInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Email
+                  </label>
+                  <input
+                    type="text"
+                    name="emailInputRegister"
+                    id="emailInputRegister"
+                    placeholder="name@gmail.com"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="emailInputRegister-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <!-- Số điện thoại -->
+                <div>
+                  <label
+                    for="sdtInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Điện thoại
+                  </label>
+                  <input
+                    type="text"
+                    name="sdtInputRegister"
+                    id="sdtInputRegister"
+                    placeholder="Số điện thoại"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="sdtInputRegister-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <!-- Căn cước -->
+                <div>
+                  <label
+                    for="textIDInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Căn cước/ Hộ
+                    chiếu
+                  </label>
+                  <input
+                    type="text"
+                    name="textIDInputRegister"
+                    id="textIDInputRegister"
+                    placeholder="Căn cước/ Hộ chiếu"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="textIDInputRegister-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <!-- Quốc tịch -->
+                <div>
+                  <label
+                    for="QuocTichInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Quốc tịch
+                  </label>
+                  <select
+                    id="QuocTichInputRegister"
+                    name="QuocTichInputRegister"
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2"
+                  >
+                    <option selected>Chọn Quốc Tịch</option>
+                  </select>
+                  <span
+                    id="QuocTichInputRegister-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <!-- Ngày tháng năm sinh -->
+                <div class="text-sm mt-1 lg:mt-0">
+                  <p class="text-sm font-medium text-stone-900">
+                    <i class="fa-solid fa-circle-question"></i> Ngày tháng năm
+                    sinh
+                  </p>
+                  <div class="relative">
+                    <input
+                      type="text"
+                      name="birthDateInputRegister"
+                      id="birthDateInputRegister"
+                      placeholder="dd/mm/yyyy"
+                      required
+                      class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                    />
+                    <span
+                      id="birthDateInputRegister-error"
+                      class="text-red-500 text-sm"
+                    ></span>
+                  </div>
+                </div>
+
+                <!-- Nhóm máu -->
+                <div class="text-sm mt-1 lg:mt-0">
                   <p class="font-medium text-stone-900">
-                    <i class="fa-solid fa-circle-question"></i> Loại áo
+                    <i class="fa-solid fa-circle-question"></i> Nhóm máu
+                  </p>
+                  <div
+                    class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1 lg:mt-5"
+                  >
+                    <button type="button" class="NhomMauItem shadow-md p-3">
+                      Không rõ
+                    </button>
+                    <button type="button" class="NhomMauItem shadow-md p-3">
+                      O
+                    </button>
+                    <button type="button" class="NhomMauItem shadow-md p-3">
+                      A
+                    </button>
+                    <button type="button" class="NhomMauItem shadow-md p-3">
+                      B
+                    </button>
+                    <button type="button" class="NhomMauItem shadow-md p-3">
+                      AB
+                    </button>
+                  </div>
+                </div>
+                <!-- Giới tính -->
+                <div class="grid grid-cols-2 gap-4 text-sm mt-1 lg:mt-0">
+                  <div class="">
+                    <p class="font-medium text-stone-900">
+                      <i class="fa-solid fa-circle-question"></i> Giới tính
+                    </p>
+                    <div
+                      class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
+                    >
+                      <a class="GioiTinhItem shadow-md p-3">Nam</a>
+                      <a class="GioiTinhItem shadow-md p-3">Nữ</a>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="font-medium text-stone-900">
+                      <i class="fa-solid fa-circle-question"></i> Loại áo
+                    </p>
+                    <div
+                      class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
+                    >
+                      <a class="LoaiAoItem shadow-md p-3">Cộc tay</a>
+                      <a class="LoaiAoItem shadow-md p-3">Ba lỗ</a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Size áo -->
+                <div class="text-sm mt-1 lg:mt-0">
+                  <p class="font-medium text-stone-900">
+                    <i class="fa-solid fa-circle-question"></i> Size áo
                   </p>
                   <div
                     class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
                   >
-                    <a class="LoaiAoItem shadow-md p-3">Cộc tay</a>
-                    <a class="LoaiAoItem shadow-md p-3">Ba lỗ</a>
+                    <a class="SizeAoItem shadow-md p-3">2XS</a>
+                    <a class="SizeAoItem shadow-md p-3">S</a>
+                    <a class="SizeAoItem shadow-md p-3">M</a>
+                    <a class="SizeAoItem shadow-md p-3">L</a>
+                    <a class="SizeAoItem shadow-md p-3">XL</a>
+                    <a class="SizeAoItem shadow-md p-3">2XL</a>
+                    <a class="SizeAoItem shadow-md p-3">4XL</a>
                   </div>
                 </div>
-              </div>
-
-              <div class="text-sm mt-1 lg:mt-0">
-                <p class="font-medium text-stone-900">
-                  <i class="fa-solid fa-circle-question"></i> Size áo
-                </p>
-                <div
-                  class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
-                >
-                  <a class="SizeAoItem shadow-md p-3">2XS</a>
-                  <a class="SizeAoItem shadow-md p-3">S</a>
-                  <a class="SizeAoItem shadow-md p-3">M</a>
-                  <a class="SizeAoItem shadow-md p-3">L</a>
-                  <a class="SizeAoItem shadow-md p-3">XL</a>
-                  <a class="SizeAoItem shadow-md p-3">2XL</a>
-                  <a class="SizeAoItem shadow-md p-3">4XL</a>
-                </div>
-              </div>
-
-              <div class="col-span-2 text-sm mt-2 lg:mt-0">
-                <div
-                  data-accordion="collapse"
-                  data-active-classes="bg-orange-500 text-white"
-                >
-                  <h2 id="accordion-color-heading-SizeAo">
-                    <button
-                      type="button"
-                      class="flex items-center justify-between w-full p-2 font-medium duration-500 border rounded-lg focus:text-white border-stone-300 bg-orange-50 hover:bg-orange-300 focus:bg-orange-500 gap-3"
-                      data-accordion-target="#accordion-color-body-SizeAo"
-                      aria-expanded="false"
-                      aria-controls="accordion-color-body-SizeAo"
-                    >
-                      <span>Bảng kích thước</span>
-                      <svg
-                        data-accordion-icon
-                        class="w-2.5 h-2.5 rotate-180 shrink-0"
-                        aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 10 6"
-                      >
-                        <path
-                          stroke="currentColor"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M9 5 5 1 1 5"
-                        />
-                      </svg>
-                    </button>
-                  </h2>
+                <!-- Bảng kích thước -->
+                <div class="col-span-2 text-sm mt-2 lg:mt-0">
                   <div
-                    id="accordion-color-body-SizeAo"
-                    class="hidden"
-                    aria-labelledby="accordion-color-heading-SizeAo"
+                    data-accordion="collapse"
+                    data-active-classes="bg-orange-500 text-white"
                   >
-                    <div class="p-4 border rounded-lg border-stone-200">
-                      <div
-                        class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start text-center"
+                    <h2 id="accordion-color-heading-SizeAo">
+                      <button
+                        type="button"
+                        class="flex items-center justify-between w-full p-2 font-medium duration-500 border rounded-lg focus:text-white border-stone-300 bg-orange-50 hover:bg-orange-300 focus:bg-orange-500 gap-3"
+                        data-accordion-target="#accordion-color-body-SizeAo"
+                        aria-expanded="false"
+                        aria-controls="accordion-color-body-SizeAo"
                       >
-                        <div class="px-3">
-                          <p class="font-bold text-lg">Áo cộc tay</p>
-                          <p>Chiều rộng (cm)</p>
-                          <p>Chiều dài (cm)</p>
+                        <span>Bảng kích thước</span>
+                        <svg
+                          data-accordion-icon
+                          class="w-2.5 h-2.5 rotate-180 shrink-0"
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M9 5 5 1 1 5"
+                          />
+                        </svg>
+                      </button>
+                    </h2>
+                    <div
+                      id="accordion-color-body-SizeAo"
+                      class="hidden"
+                      aria-labelledby="accordion-color-heading-SizeAo"
+                    >
+                      <div class="p-4 border rounded-lg border-stone-200">
+                        <div
+                          class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start text-center"
+                        >
+                          <div class="px-3">
+                            <p class="font-bold text-lg">Áo cộc tay</p>
+                            <p>Chiều rộng (cm)</p>
+                            <p>Chiều dài (cm)</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">2XS</p>
+                            <p>42</p>
+                            <p>62</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">S</p>
+                            <p>46</p>
+                            <p>66</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">M</p>
+                            <p>48</p>
+                            <p>68</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">L</p>
+                            <p>50</p>
+                            <p>70</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">XL</p>
+                            <p>52</p>
+                            <p>72</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">2XL</p>
+                            <p>54</p>
+                            <p>74</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">4XL</p>
+                            <p>58</p>
+                            <p>78</p>
+                          </div>
                         </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">2XS</p>
-                          <p>42</p>
-                          <p>62</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">S</p>
-                          <p>46</p>
-                          <p>66</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">M</p>
-                          <p>48</p>
-                          <p>68</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">L</p>
-                          <p>50</p>
-                          <p>70</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">XL</p>
-                          <p>52</p>
-                          <p>72</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">2XL</p>
-                          <p>54</p>
-                          <p>74</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">4XL</p>
-                          <p>58</p>
-                          <p>78</p>
-                        </div>
-                      </div>
-                      <hr class="my-2" />
-                      <div
-                        class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start text-center"
-                      >
-                        <div class="px-3">
-                          <p class="font-bold text-lg">Ba lỗ</p>
-                          <p>Chiều rộng (cm)</p>
-                          <p>Chiều dài (cm)</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">2XS</p>
-                          <p>40</p>
-                          <p>58</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">S</p>
-                          <p>44</p>
-                          <p>62</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">M</p>
-                          <p>46</p>
-                          <p>64</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">L</p>
-                          <p>48</p>
-                          <p>66</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">XL</p>
-                          <p>50</p>
-                          <p>68</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">2XL</p>
-                          <p>52</p>
-                          <p>70</p>
-                        </div>
-                        <div class="px-3">
-                          <p class="font-bold text-lg">4XL</p>
-                          <p>56</p>
-                          <p>74</p>
+                        <hr class="my-2" />
+                        <div
+                          class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start text-center"
+                        >
+                          <div class="px-3">
+                            <p class="font-bold text-lg">Ba lỗ</p>
+                            <p>Chiều rộng (cm)</p>
+                            <p>Chiều dài (cm)</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">2XS</p>
+                            <p>40</p>
+                            <p>58</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">S</p>
+                            <p>44</p>
+                            <p>62</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">M</p>
+                            <p>46</p>
+                            <p>64</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">L</p>
+                            <p>48</p>
+                            <p>66</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">XL</p>
+                            <p>50</p>
+                            <p>68</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">2XL</p>
+                            <p>52</p>
+                            <p>70</p>
+                          </div>
+                          <div class="px-3">
+                            <p class="font-bold text-lg">4XL</p>
+                            <p>56</p>
+                            <p>74</p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                <!-- Tiểu sử bệnh lý và dị ứng -->
+                <div class="col-span-2 mt-1 lg:mt-0">
+                  <p class="text-sm font-medium text-stone-900">
+                    <i class="fa-solid fa-circle-question"></i> Tiểu sử bệnh lý
+                    và dị ứng với:
+                  </p>
+                  <div class="flex flex-row flex-wrap gap-8">
+                    <div class="flex items-center my-1">
+                      <input
+                        id="benh_0"
+                        type="radio"
+                        name="benh"
+                        value="0"
+                        class="w-4 h-4 border-stone-300 focus:ring-2 focus:ring-orange-300 text-orange-500"
+                        checked
+                      />
+                      <label
+                        for="benh_0"
+                        class="block ms-2 text-sm font-medium text-stone-900"
+                      >
+                        Không
+                      </label>
+                    </div>
 
-              <div class="col-span-2 mt-1 lg:mt-0">
-                <p class="text-sm font-medium text-stone-900">
-                  <i class="fa-solid fa-circle-question"></i> Tiểu sử bệnh lý và
-                  dị ứng với:
-                </p>
-                <div class="flex flex-row flex-wrap gap-8">
-                  <div class="flex items-center my-1">
-                    <input
-                      id="benh_0"
-                      type="radio"
-                      name="benh"
-                      value="0"
-                      class="w-4 h-4 border-stone-300 focus:ring-2 focus:ring-orange-300 text-orange-500"
-                      checked
-                    />
-                    <label
-                      for="benh_0"
-                      class="block ms-2 text-sm font-medium text-stone-900"
-                    >
-                      Không
-                    </label>
+                    <div class="flex items-center my-1">
+                      <input
+                        id="benh_1"
+                        type="radio"
+                        name="benh"
+                        value="1"
+                        class="w-4 h-4 border-stone-300 focus:ring-2 focus:ring-orange-300 text-orange-500"
+                      />
+                      <label
+                        for="benh_1"
+                        class="block ms-2 text-sm font-medium text-stone-900"
+                      >
+                        Có
+                      </label>
+                    </div>
                   </div>
-
-                  <div class="flex items-center my-1">
-                    <input
-                      id="benh_1"
-                      type="radio"
-                      name="benh"
-                      value="1"
-                      class="w-4 h-4 border-stone-300 focus:ring-2 focus:ring-orange-300 text-orange-500"
-                    />
-                    <label
-                      for="benh_1"
-                      class="block ms-2 text-sm font-medium text-stone-900"
-                    >
-                      Có
-                    </label>
-                  </div>
+                  <textarea
+                    id="message"
+                    rows="4"
+                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400"
+                    placeholder="Tiểu sử Bệnh lý và dị ứng..."
+                  ></textarea>
                 </div>
-                <textarea
-                  id="message"
-                  rows="4"
-                  class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400"
-                  placeholder="Tiểu sử Bệnh lý và dị ứng..."
-                ></textarea>
               </div>
-            </div>
-          </form>
-          <p class="italic text-red-500 my-2">
-            <span class="font-bold">Lưu ý:</span> Thủ tục sẽ rất phức tạp nếu
-            bạn không nhập đúng thông tin theo mẫu.
-          </p>
-
-          <a href="../../../../html/VN/DatVe/MuaBIB/MienTru.html">
-            <button
-              type="button"
-              class="nutDangKy focus:ring-2 focus:ring-white"
-            >
-              Tiếp tục
-            </button>
-          </a>
+            </form>
+            <p class="italic text-red-500 my-2">
+              <span class="font-bold">Lưu ý:</span> Thủ tục sẽ rất phức tạp nếu
+              bạn không nhập đúng thông tin theo mẫu.
+            </p>
+            <a href="../../../../html/VN/DatVe/MuaBIB/MienTru.html">
+              <button
+                type="button"
+                class="nutDangKy focus:ring-2 focus:ring-white"
+              >
+                Tiếp tục
+              </button>
+            </a>
+          </div>
         </div>
 
         <!-- Bên phải -->
-        <div>
-          <!-- <h2 id="accordion-color-heading-1NTT">
-                    <button type="button"
-                        class="flex items-center justify-between w-full p-5 font-medium duration-500 border rounded-t-lg hover:text-orange-300 focus:text-white border-stone-200 hover:bg-orange-700 focus:bg-orange-500 gap-3"
-                        data-accordion-target="#accordion-color-body-1NTT" aria-expanded="true"
-                        aria-controls="accordion-color-body-1NTT">
-                        <span>Nhà tài trợ danh vị</span>
-                        <i class="fa-solid fa-caret-right"></i>
-                    </button>
-                </h2> -->
-          <div class="border border-stone-300 rounded-lg shadow-md text-center">
+        <div id="dangKyPhai">
+          <div
+            class="border border-stone-300 rounded-lg shadow-md text-center"
+            id="showInfo_full"
+          >
+            <!-- name -->
             <p
+              id="showInfo_name"
               class="font-bold bg-orange-100 py-2 rounded-t-lg text-orange-700"
             >
               Sầm Sơn - Thanh Hóa Twilight Run 2024
             </p>
             <hr />
-            <p class="bg-orange-100 py-2">
-              Tổ chức ngày: <span class="font-bold">31/08/2024</span>
+            <!-- ngày tổ chức và địa điểm -->
+            <p class="bg-orange-100 py-2" id="showInfo_location_date">
+              Tổ chức ngày:
+              <span class="font-bold" id="showInfo_date">31/08/2024</span>
               <br />
               Địa điểm:
-              <span class="font-bold">Quảng trường biển TP. Sầm Sơn</span>
+              <span class="font-bold" id="showInfo_location"
+                >Quảng trường biển TP. Sầm Sơn</span
+              >
             </p>
-            <div class="bg-orange-500 text-white rounded-b-lg py-2">
-              Cự ly: <span class="font-bold text-2xl">5km</span>
-              <br />
-              Giá tiền: <span class="font-bold text-2xl">368.000 VNĐ</span>
+            <!-- show info khi thao tác -->
+            <div
+              id="showInfo_thaoTac"
+              class="bg-orange-500 text-white rounded-b-lg py-2"
+            >
+              <p>
+                Cự ly:
+                <span class="font-bold text-2xl" id="showInfo_distance"
+                  >5km</span
+                >
+                <br />
+                Giá tiền:
+                <span class="font-bold text-2xl" id="showInfo_price"
+                  >368.000 VNĐ</span
+                >
+                <br />
+                Họ Tên:
+                <span class="font-bold text-2xl" id="showInfo_name"
+                  >368.000 VNĐ</span
+                >
+                <br />
+                Email:
+                <span class="font-bold text-2xl" id="showInfo_email"
+                  >368.000 VNĐ</span
+                >
+                <br />
+                Căn cước:
+                <span class="font-bold text-2xl" id="showInfo_cancuoc"
+                  >368.000 VNĐ</span
+                >
+              </p>
             </div>
           </div>
 
-          <p class="font-bold text-center text-stone-700 my-2">
-            Sơ đồ các cự ly
-          </p>
-          <div class="">
-            <a
-              href=""
-              data-fancybox="gallery"
-              data-caption="Project 1"
-              data-src="../../../../img/RaceKit/SSMap-02.png"
-            >
-              <img
-                class="rounded-lg"
-                src="../../../../img/RaceKit/SSMap-02.png"
-                alt=""
-              />
-            </a>
+          <div id="soDoCuLyChay">
+            <p class="font-bold text-center text-stone-700 my-2">
+              Sơ đồ các cự ly
+            </p>
+            <div class="">
+              <a
+                href=""
+                data-fancybox="gallery"
+                data-caption="Project 1"
+                data-src="../../../../img/RaceKit/SSMap-02.png"
+              >
+                <img
+                  class="rounded-lg"
+                  src="../../../../img/RaceKit/SSMap-02.png"
+                  alt=""
+                />
+              </a>
+            </div>
+            <div class="">
+              <a
+                href=""
+                data-fancybox="gallery"
+                data-caption="Project 1"
+                data-src="../../../../img/RaceKit/SSMap-03.png"
+              >
+                <img
+                  class="rounded-lg"
+                  src="../../../../img/RaceKit/SSMap-03.png"
+                  alt=""
+                />
+              </a>
+            </div>
+            <p class="font-bold text-center text-stone-700 my-2">Race-kit</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+              <div class="">
+                <a
+                  href=""
+                  class="gallery_box"
+                  data-fancybox="gallery"
+                  data-caption="Project 1"
+                  data-src="../../../../img/RaceKit/race-kit-01.png"
+                >
+                  <img
+                    class="rounded-lg"
+                    src="../../../../img/RaceKit/race-kit-01.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="">
+                <a
+                  href=""
+                  class="gallery_box"
+                  data-fancybox="gallery"
+                  data-caption="Project 1"
+                  data-src="../../../../img/RaceKit/race-kit-02.png"
+                >
+                  <img
+                    class="rounded-lg"
+                    src="../../../../img/RaceKit/race-kit-02.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="">
+                <a
+                  href=""
+                  class="gallery_box"
+                  data-fancybox="gallery"
+                  data-caption="Project 1"
+                  data-src="../../../../img/RaceKit/race-kit-03.png"
+                >
+                  <img
+                    class="rounded-lg"
+                    src="../../../../img/RaceKit/race-kit-03.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+              <div class="">
+                <a
+                  href=""
+                  class="gallery_box"
+                  data-fancybox="gallery"
+                  data-caption="Project 1"
+                  data-src="../../../../img/RaceKit/race-kit-04.png"
+                >
+                  <img
+                    class="rounded-lg"
+                    src="../../../../img/RaceKit/race-kit-04.png"
+                    alt=""
+                  />
+                </a>
+              </div>
+            </div>
           </div>
-          <div class="">
-            <a
-              href=""
-              data-fancybox="gallery"
-              data-caption="Project 1"
-              data-src="../../../../img/RaceKit/SSMap-03.png"
-            >
-              <img
-                class="rounded-lg"
-                src="../../../../img/RaceKit/SSMap-03.png"
-                alt=""
-              />
-            </a>
-          </div>
-          <p class="font-bold text-center text-stone-700 my-2">Race-kit</p>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
-            <div class="">
-              <a
-                href=""
-                class="gallery_box"
-                data-fancybox="gallery"
-                data-caption="Project 1"
-                data-src="../../../../img/RaceKit/race-kit-01.png"
-              >
-                <img
-                  class="rounded-lg"
-                  src="../../../../img/RaceKit/race-kit-01.png"
-                  alt=""
-                />
-              </a>
-            </div>
-            <div class="">
-              <a
-                href=""
-                class="gallery_box"
-                data-fancybox="gallery"
-                data-caption="Project 1"
-                data-src="../../../../img/RaceKit/race-kit-02.png"
-              >
-                <img
-                  class="rounded-lg"
-                  src="../../../../img/RaceKit/race-kit-02.png"
-                  alt=""
-                />
-              </a>
-            </div>
-            <div class="">
-              <a
-                href=""
-                class="gallery_box"
-                data-fancybox="gallery"
-                data-caption="Project 1"
-                data-src="../../../../img/RaceKit/race-kit-03.png"
-              >
-                <img
-                  class="rounded-lg"
-                  src="../../../../img/RaceKit/race-kit-03.png"
-                  alt=""
-                />
-              </a>
-            </div>
-            <div class="">
-              <a
-                href=""
-                class="gallery_box"
-                data-fancybox="gallery"
-                data-caption="Project 1"
-                data-src="../../../../img/RaceKit/race-kit-04.png"
-              >
-                <img
-                  class="rounded-lg"
-                  src="../../../../img/RaceKit/race-kit-04.png"
-                  alt=""
-                />
-              </a>
-            </div>
-          </div>
-
-          <!-- <div>
-                    <img src="../../../../img/Logo/logoBTC-03.png" alt="" class="rounded-lg">
-                    <p class="font-bold text-center text-stone-700 my-2">
-                        Thanh Hóa Run - Đơn vị phối hợp tổ chức
-                    </p>
-                </div> -->
         </div>
-
-        <!-- </div> -->
       </div>
     </section>
 
@@ -1407,7 +1379,7 @@
     <!-- ----------------------- * ---------------------- -->
 
     <!-- JS HTML -->
-    <script src="../../../../JS/Register.js"></script>
+    <!-- <script src="../../../../JS/Register.js"></script> -->
 
     <!-- CDN JQUERY -->
     <script
@@ -1431,5 +1403,17 @@
         // Your custom options
       });
     </script>
+    <!-- AXIOS LIB -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js"
+      integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <!-- lib format day -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+    <script src="../../../../JS/HandleMuaBib.js"></script>
   </body>
 </html>
