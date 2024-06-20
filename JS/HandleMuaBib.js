@@ -73,25 +73,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // Tạo ra mấy cái div chọn cự ly item
   const createDivCuLyChay = (dataSelectedItem) => {
     divChonCuLyChay.innerHTML = `
-           <p class="text-lg font-medium mb-2">Chọn cự ly chạy</p>
+           <p class="text-lg font-medium mb-2 bg-stone-500 text-white rounded-lg text-center py-1">Chọn cự ly chạy</p>
             <p class="text-center italic text-orange-500 my-2">
               Giá Early Bird (trước ngày 15/07)
             </p>
         <div class="flex flex-row flex-wrap gap-8 p-4 xl:p-0 justify-center uppercase">
             ${dataSelectedItem.distances
-              .map(
-                (distanceItem) => `
+        .map(
+          (distanceItem) => `
                 <div class="SSkmItem shadow-md"
-                data-distance="${distanceItem.distance}" data-price="${
-                  distanceItem.price
-                }">
+                data-distance="${distanceItem.distance}" data-price="${distanceItem.price
+            }">
                     <div class="p-4 bg-white rounded-t-lg">
-                        <p class="font-black text-6xl">${
-                          distanceItem.distance.split("km")[0]
-                        }<span class="text-xl">km</span></p>
-                        <p class="line-through text-stone-500">${
-                          distanceItem.realPrice
-                        }</p>
+                        <p class="font-black text-6xl">${distanceItem.distance.split("km")[0]
+            }<span class="text-xl">km</span></p>
+                        <p class="line-through text-stone-500">${distanceItem.realPrice
+            }</p>
                         <p class="font-bold text-xl">${distanceItem.price}</p>
                     </div>
                     
@@ -104,8 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
             `
-              )
-              .join("")}
+        )
+        .join("")}
         </div>
         `;
     handleClickCuLyChay();
@@ -155,6 +152,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
+
+  //   Xử lý khi click chọn Khách sạn
+  const handleClickKhachSan = () => {
+    let SSKSItem = document.querySelectorAll(".SSKSItem");
+
+    SSKSItem.forEach((item) => {
+      item.addEventListener("click", function () {
+        SSKSItem.forEach((otherItem) => {
+          otherItem.classList.remove("SSKSActive");
+        });
+  
+        this.classList.add("SSKSActive");
+      });
+    });
+  };
+  handleClickKhachSan();
+
 
   chonGiaiChay.addEventListener("change", (event) => {
     const selectedValue = chonGiaiChay.value;

@@ -46,6 +46,24 @@
 }
 
 
+
+
+/* BANNER HOME CHIỀU CAO -------------------------------------------------*/
+.banner_home{
+    height: 800px;
+}
+@media screen and (max-width: 1023px) {
+    .banner_home{
+        height: 700px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .banner_home{
+        height: 600px;
+    }
+}
+
+
 /* ẨN QUẢNG CÁO Ở TRANG NEWS -------------------------------------------------*/
 .QuangCaoNewAn{
     display: block;
@@ -80,7 +98,7 @@
 
 .SSkmItem{
     cursor: pointer;
-    background-color: #ffaa6d;
+    background-color: #a89f98;
     color: black;
     border-radius: 0.5rem;
     text-align: center;
@@ -104,6 +122,23 @@
 }
 .SSkmActive .CuLyAn{
     display: block;
+}
+
+
+/*------------*/
+.SSKSItem{
+    cursor: pointer;
+    background-color: #a89f98;
+    color: white;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: 1px solid rgb(185, 185, 185);
+    transition: all 0.5s;
+}
+.SSKSActive{
+    background-color: #F97316;
+    color: #F97316;
+    border: 1px solid #d93402;
 }
 
 /*------------*/
@@ -137,6 +172,11 @@
     border: 1px solid #F97316;
 }
 
+.SSKSItem:hover{
+    background-color: #ffaa6d;
+    color: #ffaa6d;
+    border: 1px solid #F97316;
+}
 
 
 
