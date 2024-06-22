@@ -66,3 +66,16 @@ SizeAoItem.forEach((item) => {
     this.classList.add("SizeAoActive");
   });
 });
+
+// Thẻ chọn Khách sạn
+let SSKSItem = document.querySelectorAll(".SSKSItem");
+
+SSKSItem.forEach((item) => {
+  item.addEventListener("click", function () {
+    SSKSItem.forEach((otherItem) => {
+      otherItem.classList.remove("SSKSActive");
+    });
+
+    this.classList.add("SSKSActive");
+  });
+});
