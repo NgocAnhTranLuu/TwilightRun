@@ -467,45 +467,49 @@
     </section>
     <div class="bg-orange-500 w-full h-3"></div>
 
-    <!-- New -->
-    <section class="max-w-screen-xl m-auto my-12">
-      <h2
-        class="uppercase font-bold text-3xl text-center mt-16 mb-1 md:text-5xl text-orange-500"
-      >
-        Đăng ký cá nhân
-      </h2>
-      <h2 class="text-center mb-4 md:text-xl">
-        Đăng ký nhóm (trên 10 người) - liên hệ BTC để nhận ưu đãi hấp dẫn.
-      </h2>
+    <!-- Title Đăng ký -->
+    <h2
+      class="uppercase font-bold text-3xl text-center mt-16 mb-1 md:text-5xl text-orange-500"
+    >
+      Đăng ký cá nhân
+    </h2>
+    <h2 class="text-center mb-4 md:text-xl">
+      Đăng ký nhóm (trên 10 người) - liên hệ BTC để nhận ưu đãi hấp dẫn.
+    </h2>
 
+    <!-- yêu cầu đăng nhập  -->
+    <div class="" id="yeuCauDangNhap">
+      <p>khong nhap thi dung mog sua?</p>
+      <button>Dang nhap</button>
+    </div>
+
+    <!-- Chọn giải -->
+    <div class="text-sm text-stone-900" id="divChonGiaiChay">
+      <label for="chonGiaiChay" class="block mb-2 text-lg font-medium"
+        >Chọn giải chạy bạn muốn tham dự</label
+      >
+      <select
+        id="chonGiaiChay"
+        class="block w-full p-2 mb-6 border border-stone-400 rounded-lg bg-stone-50"
+      ></select>
+    </div>
+
+    <!-- FULL FORM -->
+    <section id="fullForm" class="max-w-screen-xl m-auto my-12 hidden">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-4">
         <!-- Bên trái -->
-        <div class="col-span-2" id="dangKyTrai">
-          <div class="" id="yeuCauDangNhap">
-            <p>khong nhap thi dung mog sua?</p>
-            <button>Dang nhap</button>
-          </div>
-          <!-- Chọn giải -->
-          <div class="text-sm text-stone-900" id="divChonGiaiChay">
-            <label for="chonGiaiChay" class="block mb-2 text-lg font-medium"
-              >Chọn giải chạy bạn muốn tham dự</label
-            >
-            <select
-              id="chonGiaiChay"
-              class="block w-full p-2 mb-6 border border-stone-400 rounded-lg bg-stone-50"
-            ></select>
-          </div>
-
+        <div class="col-span-2" id="divTrai_full">
           <!-- Chọn cự ly chạy -->
-          <div id="divChonCuLyChay"></div>
+          <div id="divTrai_divChonCuLyChay"></div>
 
           <!-- Nhập thông tin -->
-          <div id="divNhapThongTin">
+          <div id="divTrai_divNhapThongTin">
             <p class="text-lg font-medium">Nhập thông tin vận động viên</p>
             <p class="italic text-orange-500">
               * Bạn cần nhập đầy đủ thông tin để đảm bảo quyền lợi khi tham gia
               giải.
             </p>
+
             <form class="my-4 space-y-6" action="#">
               <div class="form_BIB">
                 <!-- họ tên -->
@@ -641,14 +645,30 @@
                     <i class="fa-solid fa-circle-question"></i> Ngày tháng năm
                     sinh
                   </p>
-                  <div class="relative">
+                  <div class="relative max-w-sm">
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                    >
+                      <svg
+                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                        />
+                      </svg>
+                    </div>
                     <input
-                      type="text"
                       name="birthDateInputRegister"
                       id="birthDateInputRegister"
                       placeholder="dd/mm/yyyy"
                       required
-                      class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                      datepicker
+                      type="text"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     />
                     <span
                       id="birthDateInputRegister-error"
@@ -665,19 +685,39 @@
                   <div
                     class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1 lg:mt-5"
                   >
-                    <button type="button" class="NhomMauItem shadow-md p-3">
+                    <button
+                      data-bloodGroup="Không rõ"
+                      type="button"
+                      class="NhomMauItem shadow-md p-3"
+                    >
                       Không rõ
                     </button>
-                    <button type="button" class="NhomMauItem shadow-md p-3">
+                    <button
+                      data-bloodGroup="O"
+                      type="button"
+                      class="NhomMauItem shadow-md p-3"
+                    >
                       O
                     </button>
-                    <button type="button" class="NhomMauItem shadow-md p-3">
+                    <button
+                      data-bloodGroup="A"
+                      type="button"
+                      class="NhomMauItem shadow-md p-3"
+                    >
                       A
                     </button>
-                    <button type="button" class="NhomMauItem shadow-md p-3">
+                    <button
+                      data-bloodGroup="B"
+                      type="button"
+                      class="NhomMauItem shadow-md p-3"
+                    >
                       B
                     </button>
-                    <button type="button" class="NhomMauItem shadow-md p-3">
+                    <button
+                      data-bloodGroup="AB"
+                      type="button"
+                      class="NhomMauItem shadow-md p-3"
+                    >
                       AB
                     </button>
                   </div>
@@ -691,10 +731,30 @@
                     <div
                       class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
                     >
-                      <a class="GioiTinhItem shadow-md p-3">Nam</a>
-                      <a class="GioiTinhItem shadow-md p-3">Nữ</a>
+                      <button
+                        data-gender="1"
+                        type="button"
+                        class="GioiTinhItem shadow-md p-3"
+                      >
+                        Nam
+                      </button>
+                      <button
+                        data-gender="2"
+                        type="button"
+                        class="GioiTinhItem shadow-md p-3"
+                      >
+                        Nữ
+                      </button>
+                      <button
+                        data-gender="3"
+                        type="button"
+                        class="GioiTinhItem shadow-md p-3"
+                      >
+                        Khác
+                      </button>
                     </div>
                   </div>
+                  <!-- Loại áo -->
                   <div>
                     <p class="font-medium text-stone-900">
                       <i class="fa-solid fa-circle-question"></i> Loại áo
@@ -702,8 +762,21 @@
                     <div
                       class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
                     >
-                      <a class="LoaiAoItem shadow-md p-3">Cộc tay</a>
-                      <a class="LoaiAoItem shadow-md p-3">Ba lỗ</a>
+                      <button
+                        data-typeAo="Cộc tay"
+                        type="button"
+                        class="LoaiAoItem shadow-md p-3"
+                      >
+                        Cộc tay
+                      </button>
+
+                      <button
+                        data-typeAo="Ba lỗ"
+                        type="button"
+                        class="LoaiAoItem shadow-md p-3"
+                      >
+                        Ba lỗ
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -715,13 +788,61 @@
                   <div
                     class="flex flex-row flex-wrap gap-2 xl:p-0 justify-start mt-1"
                   >
-                    <a class="SizeAoItem shadow-md p-3">2XS</a>
-                    <a class="SizeAoItem shadow-md p-3">S</a>
-                    <a class="SizeAoItem shadow-md p-3">M</a>
-                    <a class="SizeAoItem shadow-md p-3">L</a>
-                    <a class="SizeAoItem shadow-md p-3">XL</a>
-                    <a class="SizeAoItem shadow-md p-3">2XL</a>
-                    <a class="SizeAoItem shadow-md p-3">4XL</a>
+                    <button
+                      data-sizeAo="2XS"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      2XS
+                    </button>
+
+                    <button
+                      data-sizeAo="S"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      S
+                    </button>
+
+                    <button
+                      data-sizeAo="M"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      M
+                    </button>
+
+                    <button
+                      data-sizeAo="L"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      L
+                    </button>
+
+                    <button
+                      data-sizeAo="XL"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      XL
+                    </button>
+
+                    <button
+                      data-sizeAo="2XL"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      2XL
+                    </button>
+
+                    <button
+                      data-sizeAo="4XL"
+                      type="button"
+                      class="SizeAoItem shadow-md p-3"
+                    >
+                      4XL
+                    </button>
                   </div>
                 </div>
                 <!-- Bảng kích thước -->
@@ -897,7 +1018,7 @@
                     </div>
                   </div>
                   <textarea
-                    id="message"
+                    id="medical_history"
                     rows="4"
                     class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400"
                     placeholder="Tiểu sử Bệnh lý và dị ứng..."
@@ -905,80 +1026,509 @@
                 </div>
               </div>
             </form>
+
             <p class="italic text-red-500 my-2">
               <span class="font-bold">Lưu ý:</span> Thủ tục sẽ rất phức tạp nếu
               bạn không nhập đúng thông tin theo mẫu.
             </p>
-            <a href="../../../../html/VN/DatVe/MuaBIB/MienTru.html">
+
+            <a>
               <button
                 type="button"
+                id="formInputSubmitRegister"
                 class="nutDangKy focus:ring-2 focus:ring-white"
               >
                 Tiếp tục
               </button>
             </a>
           </div>
+
+          <!-- Chọn khách sạn -->
+          <div id="divTrai_divChonKhachSan">
+            <div class="divTrai_divChonKhachSan_title">
+              <p
+                class="text-lg font-medium bg-stone-500 text-white rounded-lg text-center py-2 mb-1"
+              >
+                Lựa chọn khách sạn:
+              </p>
+              <p class="text-orange-500 italic text-center">
+                Nếu bạn không quan tâm hãy ấn tiếp tục
+                <br />
+                Lưu ý: Vì mùa cao điểm, số lượng phòng có hạn, nên đăng ký sớm
+                để được ưu đãi về giá
+              </p>
+            </div>
+
+            <!-- Giá khách sạn div lớn -->
+            <div
+              class="grid grid-cols-1 lg:grid-cols-3 gap-4"
+              id="divTrai_divChonKhachSan_full"
+            ></div>
+
+            <!-- Thông tin đặt khách sạn -->
+            <form class="my-4 space-y-6" action="#">
+              <div class="form_BIB">
+                <!-- Chọn loại phòng -->
+                <div id="divTrai_divChonLoaiPhong">
+                  <label
+                    for="KindOfRoom"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-exclamation text-red-800"></i>
+                    Loại phòng
+                  </label>
+                  <select
+                    id="KindOfRoom"
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2"
+                  >
+                    <option selected>Chọn loại phòng</option>
+                    <option>Phòng ở ghép</option>
+                    <option>Phòng ở riêng</option>
+                  </select>
+                </div>
+                <!-- Số lượng phòng -->
+                <div>
+                  <label
+                    for="soLuongPhongInputRegister"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-exclamation text-red-800"></i>
+                    Số lượng phòng
+                  </label>
+                  <input
+                    min="1"
+                    type="number"
+                    name="soLuongPhongInputRegister"
+                    id="soLuongPhongInputRegister"
+                    placeholder="Số lượng phòng"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                </div>
+
+                <!-- Ngày Nhận phòng Khách sạn -->
+                <div class="text-sm mt-1 lg:mt-0">
+                  <p class="text-sm font-medium text-stone-900">
+                    <i class="fa-solid fa-circle-exclamation text-red-800"></i>
+                    Ngày nhận phòng (tính từ 14:00)
+                  </p>
+                  <div class="relative max-w-sm">
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                    >
+                      <svg
+                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      name="startDayInputRegister"
+                      id="startDayInputRegister"
+                      placeholder="dd/mm/yyyy"
+                      required
+                      datepicker
+                      type="text"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                    <span
+                      id="startDayInputRegister-error"
+                      class="text-red-500 text-sm"
+                    ></span>
+                  </div>
+                </div>
+                <!-- Ngày trả phòng Khách sạn -->
+                <div class="text-sm mt-1 lg:mt-0">
+                  <p class="text-sm font-medium text-stone-900">
+                    <i class="fa-solid fa-circle-exclamation text-red-800"></i>
+                    Ngày trả phòng (đến 12:00)
+                  </p>
+                  <div class="relative max-w-sm">
+                    <div
+                      class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+                    >
+                      <svg
+                        class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+                        />
+                      </svg>
+                    </div>
+                    <input
+                      name="endDayInputRegister"
+                      id="endDayInputRegister"
+                      placeholder="dd/mm/yyyy"
+                      required
+                      datepicker
+                      type="text"
+                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    />
+                    <span
+                      id="endDayInputRegister-error"
+                      class="text-red-500 text-sm"
+                    ></span>
+                  </div>
+                </div>
+                <!-- Tổng số ngày đặt -->
+                <div class="text-sm mt-1 lg:mt-0">
+                  <p>
+                    <span class="font-bold">Tổng số ngày đặt: </span>
+                    <span
+                      class="text-lg font-bold text-red-800"
+                      id="tongSoNgayDatPhong"
+                      data-soNgayO="0"
+                    ></span>
+                  </p>
+                </div>
+                <div class="text-sm mt-1 lg:mt-0">
+                  <p>
+                    Tính từ
+                    <span
+                      id="infoStartDate"
+                      class="text-lg font-bold text-red-800"
+                      >14:00 ngày</span
+                    >
+                    đến
+                    <span
+                      id="infoEndDate"
+                      class="text-lg font-bold text-red-800"
+                      >12:00 ngày</span
+                    >
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Form miễn trừ bên trái -->
+        <div
+          id="divMienTruFull"
+          class="grid grid-cols-1 lg:grid-cols-3 gap-8 p-4"
+        >
+          <!-- Bên trái -->
+          <div class="col-span-2">
+            <!-- Nhập thông tin -->
+            <p class="text-lg font-medium">Xác nhận miễn trừ trách nhiệm</p>
+            <p class="italic text-orange-500">
+              * Bạn cần nhập đầy đủ thông tin để đảm bảo quyền lợi khi tham gia
+              giải.
+            </p>
+
+            <form class="my-4 space-y-6" action="#">
+              <p class="text-lg font-medium">Thông tin liên hệ khẩn cấp:</p>
+              <div class="form_BIB">
+                <div>
+                  <label
+                    for="tenNguoiLienLac"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Tên người liên
+                    lạc
+                  </label>
+                  <input
+                    type="text"
+                    name="tenNguoiLienLac"
+                    id="tenNguoiLienLac"
+                    placeholder="Tên người liên lạc"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="tenNguoiLienLac-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+                <div>
+                  <label
+                    for="soDienThoaiNguoiLienLac"
+                    class="block my-1 text-sm font-medium text-stone-900"
+                  >
+                    <i class="fa-solid fa-circle-question"></i> Điện thoại
+                  </label>
+                  <input
+                    type="text"
+                    name="soDienThoaiNguoiLienLac"
+                    id="soDienThoaiNguoiLienLac"
+                    placeholder="Số điện thoại"
+                    required
+                    class="bg-stone-50 border border-stone-400 text-stone-900 text-sm rounded-lg block w-full p-2 placeholder-stone-400"
+                  />
+                  <span
+                    id="soDienThoaiNguoiLienLac-error"
+                    class="text-red-500 text-sm"
+                  ></span>
+                </div>
+              </div>
+            </form>
+            <div
+              class="relative w-full overflow-y-scroll bg-orange-50 border border-stone-300 rounded-lg"
+              style="height: 600px"
+            >
+              <p class="p-4">
+                <span class="font-bold text-red-500"
+                  >Tôi, Vận động viên hay Bố mẹ/ người bảo hộ của trẻ, đã hiểu
+                  và đồng ý:</span
+                >
+                <br /><br />
+
+                <span class="font-bold">I/ Bảo mật dữ liệu cá nhân:</span>
+                <br /><br />
+                Bằng việc đăng ký mua BIB tham dự giải chạy VnExpress Marathon,
+                bạn đảm bảo rằng bạn tự mình/đã được ủy quyền thực hiện đăng ký
+                và cung cấp thông tin người chạy, đồng thời cho phép chúng tôi
+                thu thập, xử lý và lưu trữ dữ liệu cá nhân của bạn/người ủy
+                quyền bạn đăng ký
+                <br /><br />
+
+                <span class="font-bold">1/ Thông tin chúng tôi thu thập:</span>
+                <br />
+                Chúng tôi thu thập thông tin dựa trên việc bạn đăng ký mua BIB,
+                hoạt động trong giải chạy:
+                <br />
+                Khi bạn đăng ký mua BIB, thông tin chúng tôi thu thập của
+                bạn/người ủy quyền bạn đăng ký gồm:
+                <br />+ Họ và tên <br />+ Email <br />+ Tên trên BIB <br />+ Số
+                CMND/Căn cước/ Hộ chiếu <br />+ Điện thoại <br />+ Giới tính
+                <br />+ Loại áo <br />+ Size áo <br />+ Năm sinh <br />+ Quốc
+                tịch <br />+ Nhóm máu <br />+ Tiền sử bệnh lý <br />+ Thông tin
+                người thân liên hệ trong trường hợp khẩn cấp <br /><br />
+
+                <span class="font-bold">2/ Hoạt động trong giải chạy:</span>
+                <br />
+                Chúng tôi thu thập hình ảnh của người chạy (đây là hình ảnh của
+                bạn hoặc người ủy quyền bạn đăng ký).
+                <br /><br />
+
+                <span class="font-bold"
+                  >3/ Cách chúng tôi sử dụng thông tin mà chúng tôi thu
+                  thập:</span
+                >
+                <br />
+                Chúng tôi xử lý, lưu trữ và sử dụng thông tin mà chúng tôi thu
+                thập cho các mục đích:
+                <br />+ Triển khai/vận hành toàn bộ Giải chạy: in áo, in BIB,
+                cứu chữa y tế, đăng ảnh trên website VnExpress,…. <br />+ Cải
+                thiện chất lượng dịch vụ Giải chạy <br />+ Gửi thông tin khuyến
+                mại, quảng cáo và các thông tin khác về các giải chạy trong hệ
+                thống VnExpress Marathon <br /><br />
+
+                <span class="font-bold"
+                  >4/ Chúng tôi sẽ không tiết lộ thông tin của bạn trừ một trong
+                  các trường hợp sau đây:</span
+                >
+                <br />+ Có sự đồng ý <br />Chúng tôi có thể chia sẻ thông tin
+                của bạn với các công ty, tổ chức hoặc cá nhân thứ ba khi chúng
+                tôi có sự đồng ý của bạn
+                <br />
+                <br />+ Vì lý do pháp lý <br />Chúng tôi sẽ chia sẻ thông tin
+                của bạn với các công ty, tổ chức hoặc cá nhân thứ ba nếu chúng
+                tôi tin chắc rằng việc truy cập, sử dụng, lưu trữ hoặc tiết lộ
+                thông tin đó là thực sự cần thiết để: <br />— Tuân theo quy định
+                pháp luật hoặc yêu cầu của cơ quan nhà nước có thẩm quyền.
+                <br />— Các cố vấn chuyên nghiệp của chúng tôi như kiểm toán,
+                luật sư,… theo quy định của pháp luật. <br />— Phát hiện, ngăn
+                chặn, hoặc giải quyết các vấn đề về gian lận, an ninh hoặc kỹ
+                thuật.
+                <br />
+                <br />+ Để xử lý bên ngoài <br />Chúng tôi có thể cung cấp thông
+                tin của bạn cho các đơn vị liên kết hoặc các doanh nghiệp hoặc
+                cá nhân thứ ba để thực hiện các mục đích xử lý được nêu tại
+                chính sách này hoặc theo quy định của pháp luật. Các tổ chức, cá
+                nhân nhận được dữ liệu cá nhân của bạn sẽ phải dựa trên các
+                hướng dẫn của chúng tôi, tuân thủ theo nội dung quy định tại
+                Chính sách này và quy định của pháp luật về bảo vệ dữ liệu cá
+                nhân liên quan.
+                <br />
+                <br />+ Các trường hợp khác: <br />Mặc dù chúng tôi sẽ thực hiện
+                mọi nỗ lực để đảm bảo rằng các thông tin của bạn/ người ủy quyền
+                bạn đăng ký được ẩn danh/mã hóa, nhưng không thể loại trừ hoàn
+                toàn rủi ro các dữ liệu này có thể bị tiết lộ trong những trường
+                hợp: <br />— Lỗi phần cứng, phần mềm trong quá trình xử lý dữ
+                liệu làm mất dữ liệu của bạn <br />— Lỗ hổng bảo mật nằm ngoài
+                khả năng kiểm soát của chúng tôi, hệ thống có liên quan bị
+                hacker tấn công gây lộ dữ liệu <br />— Bạn tự làm lộ dữ liệu cá
+                nhân do: bất cẩn hoặc bị lừa đảo; truy cập các website/tải các
+                ứng dụng có chứa phần mềm độc hại, vv… <br />— Các trường hợp
+                bất khả kháng theo quy định pháp luật. <br /><br />
+
+                <span class="font-bold">5/ Điều khoản khác:</span>
+                <br />
+                Chúng tôi có quyền sửa đổi và cập nhật các vấn đề liệt kê ở trên
+                trong chính sách bảo mật tại bất cứ thời điểm nào mà không không
+                cần báo trước. Chính sách bảo mật cập nhật sẽ được lưu trữ/ hiển
+                thị tại trên website này.
+                <br /><br />
+
+                <span class="font-bold">II/ Về miễn trừ trách nhiệm</span>
+                <br />
+                1. Tôi xác nhận đã đọc và hiểu các quy định và điều lệ của giải
+                chạy VnExpress Marathon (sau đây gọi là Sự kiện) và đồng ý tuân
+                thủ các quy định này.
+                <br /><br />
+                2. Tôi hiểu rằng để tham gia Sự kiện cần phải có sự tập luyện và
+                chuẩn bị về mặt thể chất. Tôi tuyên bố rằng tôi đã luyện tập đầy
+                đủ và tôi không nhận thấy có bệnh tật, chấn thương hoặc điều bất
+                khả về thể chất nào có thể gây ra thương tích hoặc tử vong cho
+                tôi trong khi tham gia.
+                <br /><br />
+                3. Trong trường hợp tôi nhận ra một vấn đề về sức khoẻ nào, hoặc
+                tôi bị ốm hoặc bị thương trước khi hoặc trong khi diễn ra Sự
+                kiện, tôi sẽ rút khỏi Sự kiện
+                <br /><br />
+                4. Tôi xác nhận và hiểu rằng trong khi tham gia Sự kiện:
+                <br />+ Tôi có thể bị thương, về mặt thể chất hoặc tinh thần,
+                hoặc tử vong từ các lý do khác nhau, bao gồm: nỗ lực quá mức,
+                mất nước, đau tim, trượt, vấp hoặc ngã, tai nạn với những người
+                tham gia khác, hoặc các tai nạn gây ra bởi các hành động của
+                chính tôi; <br />+ Tôi có thể gây ra thương tích cho người khác
+                hoặc gây hư hại cho tài sản của họ; <br />+ Các điều kiện tổ
+                chức Sự kiện có thể thay đổi mà không được thông báo trước;
+                <br />+ Tôi tự gánh vác rủi ro và trách nhiệm cho bất kỳ thương
+                tích nào, sự tử vong hoặc hư hại về tài sản là kết quả của việc
+                tham gia Sự kiện. <br /><br />
+                5. Tôi đồng ý rằng nếu tôi bị thương hoặc cần được trợ giúp về y
+                tế, những người tổ chức Sự kiện có thể thu xếp điều trị y tế và
+                vận chuyển cấp cứu nếu những người tổ chức Sự kiện thấy cần
+                thiết, với chi phí do tôi chịu. Tôi đồng ý rằng tôi tự chịu
+                trách nhiệm về bảo hiểm đối với chi phí y tế và vận chuyển y
+                khoa. Ban tổ chức chỉ đảm bảo mua bảo hiểm cho người tham gia
+                với số tiền không vượt quá 20.000.000 VNĐ (Hai mươi triệu đồng)
+                với trường hợp thương tật vĩnh viễn và chi phí điều trị không
+                vượt quá khung của gói bảo hiểm.
+                <br /><br />
+                6. Tôi đồng ý miễn trừ và không gây thiệt hại cho Ban Tổ chức,
+                những quan chức, nhân viên, đại lý, tình nguyện viên, đối tác
+                hợp đồng, các cơ quan công quyền, người sở hữu đất và các nhà
+                tài trợ, khỏi bất kỳ các yêu cầu bồi thường, đòi hỏi, quyền lợi
+                hoặc lý do khởi tố, kiện tụng, chi phí và thủ tục tố tụng dưới
+                bất kỳ hình thức nào, xuất phát từ thương tích, mất mát, hư hại
+                hoặc tử vong xảy ra với tôi hoặc với tài sản của tôi là kết quả
+                của việc tôi tham gia cuộc đua.
+                <br /><br />
+                7. Tôi chấp nhận cho phép tên, kết quả cuộc đua, ảnh, video,
+                truyền thông đa phương tiện hoặc phim của tôi được sử dụng cho
+                bất kỳ mục đích hợp pháp nào bởi ban tổ chức cuộc đua mà không
+                phải trả phí hoặc đền bù
+                <br /><br />
+                8. Tôi xác nhận rằng Ban Tổ chức có thể thay đổi đường chạy so
+                với nội dung quảng cáo mà không cần thông báo nếu Ban Tổ chức
+                thấy việc này là cần thiết. Tôi cũng xác nhận rằng ban tổ chức
+                Sự kiện có thể huỷ Sự kiện do điều kiện thời tiết, các điều kiện
+                về an toàn, hoạt động khủng bố hoặc sự kiện siêu nhiên và trong
+                các trường hợp như vậy, lệ phí tham dự của tôi sẽ không được
+                hoàn lại.
+                <br /><br />
+                9. Tôi xác nhận rằng việc tôi (hoặc người được ủy quyền) ký vào
+                bản giao nhận Race Kit đồng nghĩa với việc tôi đã kiểm tra và đã
+                nhận đầy đủ, chính xác size áo, số bib, chip điện tử đo thời
+                gian chạy của mình. Tôi hoàn toàn tự chịu trách nhiệm về việc
+                làm mất bib và chip sau khi nhận từ Ban tổ chức.
+                <br /><br />
+                <span class="font-bold"
+                  >Việc đăng ký đã thể hiện sự chấp thuận của bạn, đồng thời bạn
+                  đã hiểu, đồng ý, đảm bảo các điều khoản được quy định tại
+                  website và trong phạm vi hệ thống đăng ký trực tuyến, không
+                  phụ thuộc vào bạn ký bản cam kết này.</span
+                >
+              </p>
+              <div
+                class="sticky bottom-0 left-0 z-50 w-full bg-orange-500 border-t border-stone-300 p-4"
+              >
+                <div class="flex items-center">
+                  <input
+                    id="checkboxDieuKhoan"
+                    type="checkbox"
+                    value=""
+                    class="w-8 h-8 text-orange-900 bg-stone-100 border-stone-300 rounded focus:ring-orange-900 dark:ring-offset-stone-800 focus:ring-2"
+                  />
+                  <label
+                    for="checkboxDieuKhoan"
+                    class="ml-4 text-lg lg:text-xl font-bold text-white"
+                    >Tôi đồng ý với Miễn trừ trách nhiệm và Chính sách bảo mật
+                    dữ liệu cá nhân dưới đây.</label
+                  >
+                </div>
+              </div>
+            </div>
+            <p class="italic text-red-500 my-2">
+              <span class="font-bold">Lưu ý:</span> Thủ tục sẽ rất phức tạp nếu
+              bạn không nhập đúng thông tin theo mẫu.
+            </p>
+
+            <button
+              id="buttonQuayLai"
+              type="button"
+              class="nutXem focus:ring-2 focus:ring-white"
+            >
+              Quay lại
+            </button>
+
+            <button
+              type="button"
+              class="nutDangKy focus:ring-2 focus:ring-white"
+              id="nutDangKy"
+            >
+              Đăng ký
+            </button>
+          </div>
         </div>
 
         <!-- Bên phải -->
-        <div id="dangKyPhai">
+        <div id="divPhai_full">
+          <!-- Info full -->
           <div
-            class="border border-stone-300 rounded-lg shadow-md text-center"
-            id="showInfo_full"
+            id="divPhai_showInfo_full"
+            class="border border-stone-300 rounded-lg shadow-md text-center fixed top-24 bg-green-500"
           >
-            <!-- name -->
+            <!-- tên giải chạy -->
             <p
-              id="showInfo_name"
+              id="divPhai_showInfo_tenGiaiChay"
               class="font-bold bg-orange-100 py-2 rounded-t-lg text-orange-700"
-            >
-              Sầm Sơn - Thanh Hóa Twilight Run 2024
-            </p>
+            ></p>
             <hr />
             <!-- ngày tổ chức và địa điểm -->
-            <p class="bg-orange-100 py-2" id="showInfo_location_date">
-              Tổ chức ngày:
-              <span class="font-bold" id="showInfo_date">31/08/2024</span>
-              <br />
-              Địa điểm:
-              <span class="font-bold" id="showInfo_location"
-                >Quảng trường biển TP. Sầm Sơn</span
-              >
-            </p>
-            <!-- show info khi thao tác -->
-            <div
-              id="showInfo_thaoTac"
-              class="bg-orange-500 text-white rounded-b-lg py-2"
-            >
+            <div id="divPhai_showInfo_date_time" class="">
               <p>
-                Cự ly:
-                <span class="font-bold text-2xl" id="showInfo_distance"
-                  >5km</span
-                >
-                <br />
-                Giá tiền:
-                <span class="font-bold text-2xl" id="showInfo_price"
-                  >368.000 VNĐ</span
-                >
-                <br />
-                Họ Tên:
-                <span class="font-bold text-2xl" id="showInfo_name"
-                  >368.000 VNĐ</span
-                >
-                <br />
-                Email:
-                <span class="font-bold text-2xl" id="showInfo_email"
-                  >368.000 VNĐ</span
-                >
-                <br />
-                Căn cước:
-                <span class="font-bold text-2xl" id="showInfo_cancuoc"
-                  >368.000 VNĐ</span
-                >
+                Tổ chức ngày: <span id="divPhai_showInfo_dateGiayChay"></span>
               </p>
+              <p>
+                Địa điểm: <span id="divPhai_showInfo_locationGiayChay"></span>
+              </p>
+            </div>
+            <!-- show info họ tên, cự ly, giá bib -->
+            <div id="divPhai_showInfo_userName_cuLy_giaBib" class="">
+              <p>Họ tên: <span id="divPhai_showInfo_hoTenUser"></span></p>
+              <p>Cự ly: <span id="divPhai_showInfo_cuLy"></span></p>
+              <p>Giá bib: <span id="divPhai_showInfo_giaBib"></span></p>
+            </div>
+            <!-- show info khách sạn giá khách sạn -->
+            <div id="divPhai_showInfo_tenKhachSan_giaKhachSan" class="">
+              <p>
+                Tên khách sạn: <span id="divPhai_showInfo_tenKhachSan"></span>
+              </p>
+              <p>
+                Giá khách sạn: <span id="divPhai_showInfo_giaKhachSan"></span>
+              </p>
+            </div>
+
+            <div id="divPhai_showInfo_divTongTien" class="">
+              <p>Tổng tiền: <span id="divPhai_showInfo_tongTien"></span></p>
             </div>
           </div>
 
-          <div id="soDoCuLyChay">
+          <div id="divPhai_soDoCuLyChay">
             <p class="font-bold text-center text-stone-700 my-2">
               Sơ đồ các cự ly
             </p>
@@ -1077,9 +1627,14 @@
         </div>
       </div>
     </section>
+    <!-- FULL FORM chua bắt đầu -->
+    <div id="fullForm__chuaBatDau" class="hidden">
+      <p>Giải chạy chưa bắt đầu, thử lại sau</p>
+    </div>
+
+    <!-- FORM MIỄN TRỪ -->
 
     <!-- footer -->
-
     <footer class="bg-black">
       <!-- icon -->
       <div class="bg-orange-500 w-full p-2">
@@ -1390,6 +1945,7 @@
 
     <!-- Flowbite -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 
     <!-- BACKTOTOP -->
     <script src="../../../../JS/util.js"></script>
@@ -1414,6 +1970,13 @@
     <!-- lib format day -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-    <script src="../../../../JS/HandleMuaBib.js"></script>
+    <!-- lib sweat alert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="module" src="../../../../JS/MuaBib/MuaBib.js"></script>
+    <script
+      type="module"
+      src="../../../../JS/MuaBib/XuLyCacTacVuKhiClick.js"
+    ></script>
   </body>
 </html>

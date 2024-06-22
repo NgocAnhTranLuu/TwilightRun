@@ -2,20 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* header nav footer------------------------------ */
 .bg_nav {
     /* background-color: rgba(0, 0, 0, 0.5); */
     backdrop-filter: blur(10px);
 }
 
-
-
-
-
 .nutDangKy {
     padding: 10px 30px;
-    background-color: #F97316;
+    background-color: #f97316;
     color: white;
     border: 1px solid white;
     border-radius: 8px;
@@ -30,9 +25,9 @@
 
 .nutXem {
     padding: 10px 30px;
-    background-color: white;;
-    color: #F97316;
-    border: 1px solid #F97316;
+    background-color: white;
+    color: #f97316;
+    border: 1px solid #f97316;
     border-radius: 8px;
     text-align: center;
     font-weight: 500;
@@ -42,43 +37,38 @@
 .nutXem:hover {
     background-color: #d93402;
     color: white;
-    border: 1px solid #F97316;
+    border: 1px solid #f97316;
 }
-
 
 /* ẨN QUẢNG CÁO Ở TRANG NEWS -------------------------------------------------*/
-.QuangCaoNewAn{
+.QuangCaoNewAn {
     display: block;
 }
-.QuangCaoNewHien{
+.QuangCaoNewHien {
     display: none;
 }
 @media screen and (max-width: 1023px) {
-    .QuangCaoNewAn{
+    .QuangCaoNewAn {
         display: none;
     }
-    .QuangCaoNewHien{
+    .QuangCaoNewHien {
         display: block;
     }
 }
 
-
-
-
 /* TRANG MUA BIB CLICK CÁC THẺ -------------------------------------------------*/
-.form_BIB{
+.form_BIB {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 @media screen and (max-width: 1023px) {
-    .form_BIB{
+    .form_BIB {
         display: block;
     }
 }
 
-
-.SSkmItem{
+.SSkmItem {
     cursor: pointer;
     background-color: #ffaa6d;
     color: black;
@@ -87,22 +77,22 @@
     border: 1px solid rgb(185, 185, 185);
     transition: all 0.5s;
 }
-.SSkmItem .CuLyHien{
+.SSkmItem .CuLyHien {
     display: block;
 }
-.SSkmItem .CuLyAn{
+.SSkmItem .CuLyAn {
     display: none;
 }
 
-.SSkmActive{
+.SSkmActive {
     background-color: #d93402;
     color: #d93402;
     border: 1px solid #d93402;
 }
-.SSkmActive .CuLyHien{
+.SSkmActive .CuLyHien {
     display: none;
 }
-.SSkmActive .CuLyAn{
+.SSkmActive .CuLyAn {
     display: block;
 }
 
@@ -110,7 +100,8 @@
 .NhomMauItem,
 .GioiTinhItem,
 .LoaiAoItem,
-.SizeAoItem{
+.SizeAoItem,
+.khachSanItem {
     cursor: pointer;
     background-color: white;
     color: black;
@@ -122,8 +113,9 @@
 .NhomMauActive,
 .GioiTinhActive,
 .LoaiAoActive,
-.SizeAoActive{
-    background-color: #F97316;
+.SizeAoActive,
+.khachSanActive {
+    background-color: #f97316;
     color: white;
     border: 1px solid #d93402;
 }
@@ -132,13 +124,11 @@
 .NhomMauItem:hover,
 .GioiTinhItem:hover,
 .LoaiAoItem:hover,
-.SizeAoItem:hover{
+.SizeAoItem:hover,
+.khachSanItem:hover {
     background-color: #ffaa6d;
-    border: 1px solid #F97316;
+    border: 1px solid #f97316;
 }
-
-
-
 
 /* BACKTOTOP -------------------------------------------------*/
 .backToTop {
@@ -148,7 +138,7 @@
     line-height: 47px;
     border-radius: 50%;
 
-    background-color: #F97316;
+    background-color: #f97316;
     border: 1px solid white;
     color: white;
     font-size: 22px;
@@ -183,3 +173,4 @@
         /* box-shadow: 2px 2px 10px #d93402; */
     }
 }
+
