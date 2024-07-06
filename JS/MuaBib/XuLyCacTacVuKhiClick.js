@@ -15,10 +15,12 @@ export const handleClickCuLyChay = () => {
       const price = this.getAttribute("data-price");
       const distance_id = this.getAttribute("data-distance-id");
       setGlobalData("distance_id", distance_id);
+      setGlobalData("distance_value", distance);
+      console.log("distance_value", getGlobalData("distance_value"));
       console.log("distance_id", getGlobalData("distance_id"));
 
-      divPhai_showInfo_cuLy.innerText = distance;
-      divPhai_showInfo_giaBib.innerText = price;
+      divPhai_showInfo_cuLy.innerText = distance + " km";
+      divPhai_showInfo_giaBib.innerText = price.toLocaleString() + " VNĐ";
       showTongTien();
     });
   });
@@ -55,7 +57,7 @@ const createDivChonLoaiPhong = (hotelItem) => {
     setGlobalData("status_stay", value_status_stay);
     console.log("status_stay", getGlobalData("status_stay"));
     document.getElementById("divPhai_showInfo_giaKhachSan").innerText =
-      selectedPrice + " VNĐ";
+      selectedPrice.toLocaleString() + " VNĐ";
     showTongTien();
   });
 };
@@ -118,6 +120,7 @@ export const handleClickNhomMau = () => {
       setGlobalData("blood_group", this.getAttribute("data-bloodGroup"));
       console.log("blood_group", getGlobalData("blood_group"));
       this.classList.add("NhomMauActive");
+      document.getElementById("nhomMau-error").textContent = "";
     });
   });
 };
@@ -132,8 +135,8 @@ export const handleClickGioiTinh = () => {
       });
       setGlobalData("gender", this.getAttribute("data-gender"));
       console.log("gender", getGlobalData("gender"));
-
       this.classList.add("GioiTinhActive");
+      document.getElementById("gender-error").textContent = "";
     });
   });
 };
@@ -152,6 +155,7 @@ export const handleClickSizeAo = () => {
       console.log("shirt_size", getGlobalData("shirt_size"));
 
       this.classList.add("SizeAoActive");
+      document.getElementById("sizeAo-error").textContent = "";
     });
   });
 };
@@ -169,6 +173,7 @@ export const handleClickLoaiAo = () => {
       console.log("shirt_type", getGlobalData("shirt_type"));
 
       this.classList.add("LoaiAoActive");
+      document.getElementById("loaiAo-error").textContent = "";
     });
   });
 };
@@ -215,32 +220,35 @@ nutDangKy.addEventListener("click", (event) => {
 
     console.log("formData", formData);
 
-    // const requestOptions = {
-    //   method: "POST",
-    //   headers: {
-    //     Accept: "application/json",
-    //   },
-    //   body: formData,
-    //   redirect: "follow",
-    // };
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      body: formData,
+      redirect: "follow",
+    };
 
-    // fetch("http://localhost:3000/regform", requestOptions)
-    //   .then((response) => response.text())
-    //   .then((result) => {
-    //     console.log(result);
-    //     Swal.fire({
-    //       title: "Thành công!",
-    //       text: "Bạn đã điền thông tin cá nhân chính xác, giờ thì thanh toán nữa là xong!",
-    //       icon: "success",
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //     Swal.fire({
-    //       title: "Lỗi!",
-    //       text: "Đã có lỗi xảy ra trong quá trình gửi dữ liệu. Vui lòng thử lại.",
-    //       icon: "error",
-    //     });
-    //   });
+    fetch(
+      "https://6d88-14-241-94-14.ngrok-free.app/api/registrationRunningTournament",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(result);
+        Swal.fire({
+          title: "Thành công!",
+          text: "Bạn đã điền thông tin cá nhân chính xác, giờ thì thanh toán nữa là xong!",
+          icon: "success",
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+        Swal.fire({
+          title: "Lỗi!",
+          text: "Đã có lỗi xảy ra trong quá trình gửi dữ liệu. Vui lòng thử lại.",
+          icon: "error",
+        });
+      });
   }
 });

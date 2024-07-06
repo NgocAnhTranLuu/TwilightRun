@@ -1,3 +1,5 @@
+import { getGlobalData, globalData, setGlobalData } from "./globalVar.js";
+
 // 1.Validate xem có chọn cự ly chưa
 export const validateCuLyChaySelected = () => {
   let SSkmItem = document.querySelectorAll(".SSkmItem");
@@ -19,6 +21,9 @@ export function validateFullName() {
     return false;
   } else if (/\d/.test(fullName)) {
     fullNameError.textContent = "Họ và tên không được có kí tự số";
+    return false;
+  } else if (fullName.length <= 6) {
+    fullNameError.textContent = "Họ và tên phải lớn hơn 6 kí tự";
     return false;
   } else {
     fullNameError.textContent = "";
@@ -75,13 +80,23 @@ export function validatePhone() {
 export function validateCanCuoc() {
   const canCuoc = document.getElementById("textIDInputRegister").value.trim();
   const canCuocError = document.getElementById("textIDInputRegister-error");
+
+  // Kiểm tra nếu căn cước bỏ trống
   if (canCuoc === "") {
     canCuocError.textContent = "Căn cước không được bỏ trống";
     return false;
-  } else {
-    canCuocError.textContent = "";
-    return true;
   }
+
+  // Kiểm tra nếu căn cước không phải là 12 chữ số
+  const canCuocPattern = /^\d{12}$/;
+  if (!canCuocPattern.test(canCuoc)) {
+    canCuocError.textContent = "Căn cước phải gồm 12 chữ số";
+    return false;
+  }
+
+  // Nếu căn cước hợp lệ
+  canCuocError.textContent = "";
+  return true;
 }
 // 7. validate quốc tịch
 export function validateNationality() {
@@ -97,7 +112,58 @@ export function validateNationality() {
   }
 }
 // 8. validate ngày sinh
+// export function validateDate() {
+//   let distance_value = getGlobalData("distance_value");
+//   const dateInput = document
+//     .getElementById("birthDateInputRegister")
+//     .value.trim();
+//   const dateError = document.getElementById("birthDateInputRegister-error");
+//   const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+
+//   if (dateInput === "") {
+//     dateError.textContent = "Ngày tháng năm sinh không được bỏ trống";
+//     return false;
+//   }
+
+//   const match = dateInput.match(dateRegex);
+//   if (!match) {
+//     dateError.textContent = "Định dạng ngày tháng năm sinh không hợp lệ";
+//     return false;
+//   }
+
+//   const day = parseInt(match[1], 10);
+//   const month = parseInt(match[2], 10);
+//   const year = parseInt(match[3], 10);
+
+//   if (month < 1 || month > 12) {
+//     dateError.textContent = "Tháng không hợp lệ";
+//     return false;
+//   }
+
+//   if (day < 1 || day > 31) {
+//     dateError.textContent = "Ngày không hợp lệ";
+//     return false;
+//   }
+
+//   if ((month === 4 || month === 6 || month === 9 || month === 11) && day > 30) {
+//     dateError.textContent = "Tháng này chỉ có 30 ngày";
+//     return false;
+//   }
+
+//   if (month === 2) {
+//     const isLeap = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+//     if (day > 29 || (day === 29 && !isLeap)) {
+//       dateError.textContent = "Tháng 2 không có ngày này";
+//       return false;
+//     }
+//   }
+
+//   dateError.textContent = "";
+//   return true;
+// }
+
 export function validateDate() {
+  let distance_value = getGlobalData("distance_value");
   const dateInput = document
     .getElementById("birthDateInputRegister")
     .value.trim();
@@ -142,10 +208,50 @@ export function validateDate() {
     }
   }
 
+  // Tính toán tuổi
+  const today = new Date();
+  const birthDate = new Date(year, month - 1, day);
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  if (
+    monthDiff < 0 ||
+    (monthDiff === 0 && today.getDate() < birthDate.getDate())
+  ) {
+    age--;
+  }
+
+  console.log("Calculated age: ", age); // Log tuổi được tính toán
+
+  // Kiểm tra tuổi dựa trên khoảng cách
+  if (distance_value == 5 && age < 12) {
+    dateError.textContent = "Đối với cự ly 5km, bạn phải trên 11 tuổi";
+    return false;
+  }
+
+  if (distance_value == 21 && age < 17) {
+    dateError.textContent = "Đối với cự ly 21km, bạn phải trên 16 tuổi";
+    return false;
+  }
+
   dateError.textContent = "";
   return true;
 }
 
+// 9. validate nhóm máu
+// export const validateBloodGroup = () => {
+//   let NhomMauList = document.querySelectorAll(".NhomMauItem");
+//   let selected = false;
+//   NhomMauList.forEach((NhomMauItem) => {
+//     if (NhomMauItem.classList.contains("NhomMauActive")) {
+//       selected = true;
+//       document.getElementById("nhomMau-error").textContent = "";
+//     } else {
+//       document.getElementById("nhomMau-error").textContent =
+//         "Vui lòng chọn nhóm máu.";
+//     }
+//   });
+//   return selected;
+// };
 // 9. validate nhóm máu
 export const validateBloodGroup = () => {
   let NhomMauList = document.querySelectorAll(".NhomMauItem");
@@ -155,10 +261,31 @@ export const validateBloodGroup = () => {
       selected = true;
     }
   });
+
+  if (!selected) {
+    document.getElementById("nhomMau-error").textContent =
+      "Vui lòng chọn nhóm máu.";
+  } else {
+    document.getElementById("nhomMau-error").textContent = "";
+  }
+
   return selected;
 };
 
 // 10.validate giới tính
+// export const validateGender = () => {
+//   let GenderList = document.querySelectorAll(".GioiTinhItem");
+//   let selected = false;
+//   GenderList.forEach((GioiTinhItem) => {
+//     if (GioiTinhItem.classList.contains("GioiTinhActive")) {
+//       selected = true;
+//     } else {
+//       document.getElementById("gender-error").textContent =
+//         "Vui lòng chọn giới tính.";
+//     }
+//   });
+//   return selected;
+// };
 export const validateGender = () => {
   let GenderList = document.querySelectorAll(".GioiTinhItem");
   let selected = false;
@@ -167,10 +294,32 @@ export const validateGender = () => {
       selected = true;
     }
   });
+
+  if (!selected) {
+    document.getElementById("gender-error").textContent =
+      "Vui lòng chọn giới tính.";
+  } else {
+    document.getElementById("gender-error").textContent = "";
+  }
+
   return selected;
 };
 
 // 11.validate loại áo
+// export const validateLoaiAo = () => {
+//   let ListLoaiAo = document.querySelectorAll(".LoaiAoItem");
+//   let selected = false;
+//   ListLoaiAo.forEach((LoaiAoItem) => {
+//     if (LoaiAoItem.classList.contains("LoaiAoActive")) {
+//       document.getElementById("loaiAo-error").textContent = "";
+//       selected = true;
+//     } else {
+//       document.getElementById("loaiAo-error").textContent =
+//         "Vui lòng chọn loại áo.";
+//     }
+//   });
+//   return selected;
+// };
 export const validateLoaiAo = () => {
   let ListLoaiAo = document.querySelectorAll(".LoaiAoItem");
   let selected = false;
@@ -179,10 +328,31 @@ export const validateLoaiAo = () => {
       selected = true;
     }
   });
+
+  if (!selected) {
+    document.getElementById("loaiAo-error").textContent =
+      "Vui lòng chọn loại áo.";
+  } else {
+    document.getElementById("loaiAo-error").textContent = "";
+  }
+
   return selected;
 };
 
 // 12.validate size áo
+// export const validateSizeAo = () => {
+//   let ListSizeAo = document.querySelectorAll(".SizeAoItem");
+//   let selected = false;
+//   ListSizeAo.forEach((SizeAoItem) => {
+//     if (SizeAoItem.classList.contains("SizeAoActive")) {
+//       selected = true;
+//     } else {
+//       document.getElementById("sizeAo-error").textContent =
+//         "Vui lòng chọn size áo.";
+//     }
+//   });
+//   return selected;
+// };
 export const validateSizeAo = () => {
   let ListSizeAo = document.querySelectorAll(".SizeAoItem");
   let selected = false;
@@ -191,6 +361,14 @@ export const validateSizeAo = () => {
       selected = true;
     }
   });
+
+  if (!selected) {
+    document.getElementById("sizeAo-error").textContent =
+      "Vui lòng chọn size áo.";
+  } else {
+    document.getElementById("sizeAo-error").textContent = "";
+  }
+
   return selected;
 };
 
@@ -310,7 +488,6 @@ export const validateAll = () => {
   return allValid;
 };
 
-
 // Gắn sự kiện click vào nút đăng ký
 const formInputSubmitRegister = document.getElementById(
   "formInputSubmitRegister"
@@ -332,7 +509,25 @@ formInputSubmitRegister.addEventListener("click", (event) => {
   }
 });
 
+// export function validateFullNameNguoiLienLac() {
+//   let tenNguoiDangKy = getGlobalData("name");
+//   const fullName = document.getElementById("tenNguoiLienLac").value.trim();
+//   const fullNameError = document.getElementById("tenNguoiLienLac-error");
+
+//   if (fullName === "") {
+//     fullNameError.textContent = "Họ và tên không được bỏ trống";
+//     return false;
+//   } else if (/\d/.test(fullName)) {
+//     fullNameError.textContent = "Họ và tên không được có kí tự số";
+//     return false;
+//   } else {
+//     fullNameError.textContent = "";
+//     return true;
+//   }
+// }
+
 export function validateFullNameNguoiLienLac() {
+  let tenNguoiDangKy = getGlobalData("name");
   const fullName = document.getElementById("tenNguoiLienLac").value.trim();
   const fullNameError = document.getElementById("tenNguoiLienLac-error");
 
@@ -342,13 +537,36 @@ export function validateFullNameNguoiLienLac() {
   } else if (/\d/.test(fullName)) {
     fullNameError.textContent = "Họ và tên không được có kí tự số";
     return false;
+  } else if (fullName === tenNguoiDangKy) {
+    fullNameError.textContent =
+      "Tên người liên lạc phải khác với tên người đăng ký";
+    return false;
   } else {
     fullNameError.textContent = "";
     return true;
   }
 }
 
+// export function validatePhoneNguoiLienLac() {
+//   let sdtNguoiDangKy = getGlobalData("phone");
+//   const phone = document.getElementById("soDienThoaiNguoiLienLac").value.trim();
+//   const phoneError = document.getElementById("soDienThoaiNguoiLienLac-error");
+//   const phoneRegex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
+
+//   if (phone === "") {
+//     phoneError.textContent = "Số điện thoại không được bỏ trống";
+//     return false;
+//   } else if (!phoneRegex.test(phone)) {
+//     phoneError.textContent = "Số điện thoại không hợp lệ";
+//     return false;
+//   } else {
+//     phoneError.textContent = "";
+//     return true;
+//   }
+// }
+
 export function validatePhoneNguoiLienLac() {
+  let sdtNguoiDangKy = getGlobalData("phone");
   const phone = document.getElementById("soDienThoaiNguoiLienLac").value.trim();
   const phoneError = document.getElementById("soDienThoaiNguoiLienLac-error");
   const phoneRegex = /((09|03|07|08|05)+([0-9]{8})\b)/g;
@@ -358,6 +576,10 @@ export function validatePhoneNguoiLienLac() {
     return false;
   } else if (!phoneRegex.test(phone)) {
     phoneError.textContent = "Số điện thoại không hợp lệ";
+    return false;
+  } else if (phone === sdtNguoiDangKy) {
+    phoneError.textContent =
+      "Số điện thoại của người liên lạc phải khác với số điện thoại của người đăng ký";
     return false;
   } else {
     phoneError.textContent = "";
@@ -497,7 +719,3 @@ export const validateDangKy = () => {
   }
   return allValid;
 };
-
-
-
-
